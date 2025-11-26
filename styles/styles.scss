@@ -1,0 +1,32 @@
+@import "buscaMinas";
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #d4d6c9;
+}
+
+.header-container {
+    background-color: #4c8b43;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    h1 {
+        color: #d1cccc;
+    }
+
+    ul {
+        list-style: none;
+        display: flex;
+        gap: 10px;
+
+        a {
+            text-decoration: none;
+            color: #d1cccc;
+            border: 1px solid #d1cccc;
+            padding: 5px;
+            border-radius: 5px;
+        }
+    }
+}
