@@ -99,16 +99,15 @@ function collisionDetection() {
     for (let c = 0; c < brickColumnCount; c++) {
         for (let r = 0; r < brickRowCount; r++) {
             const currentBrick = bricks[c][r];
-            if (currentBrick.status === brickStatus.destroyed) {
+            const isBallSameAsBrick =
+                x > currentBrick.x &&
+                x < currentBrick.x + brickWidth;
 
-                const isBallSameAsBrick =
-                    x > currentBrick.x &&
-                    x < currentBrick.x + brickWidth;
+            const isBallSameAsBrickTop =
+                y > currentBrick.y &&
+                y < currentBrick.y + brickHeight;
 
-                const isBallSameAsBrickTop =
-                    y > currentBrick.y &&
-                    y < currentBrick.y + brickHeight;
-
+            if (currentBrick.status === brickStatus.exists) {
                 if (isBallSameAsBrick && isBallSameAsBrickTop) {
                     dy = -dy;
                     currentBrick.status = brickStatus.destroyed;
@@ -117,6 +116,7 @@ function collisionDetection() {
         }
     }
 };
+
 
 function ballMovement() {
     x += dx;
