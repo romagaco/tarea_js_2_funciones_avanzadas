@@ -6,13 +6,16 @@ canvas.height = 480;
 
 // variables de nuestro juego
 let counter = 0;
+let score = 0;
+let difficulty = null;
+let gameStarted = false;
 
 // variables de la bolita
 let ballRadius = 10; // tamaño
 let x = canvas.width / 2; // posicion x
 let y = canvas.height - 30; // posicion y
-let dx = 2; // velocidad en x
-let dy = -2; // velocidad en y
+let dx = 0; // velocidad en x (se setea al seleccionar dificultad)
+let dy = 0; // velocidad en y (se setea al seleccionar dificultad)
 
 // variables de la paleta
 let paddleWidth = 50;
@@ -51,7 +54,7 @@ for (let c = 0; c < brickColumnCount; c++) {
     }
 }
 
-// velocidad de la bolita
+// dibujamos la bolita
 
 function drawBall() {
     ctx.beginPath(); // inicio de trazo
@@ -111,6 +114,8 @@ function collisionDetection() {
                 if (isBallSameAsBrick && isBallSameAsBrickTop) {
                     dy = -dy;
                     currentBrick.status = brickStatus.destroyed;
+                    score += 5; // puntos por ladrillo roto
+                    updateScoreDisplay();
                 }
             }
         }
@@ -190,6 +195,7 @@ function clearCanvas() {
 };
 
 function draw() {
+    if (!gameStarted) return;
     clearCanvas();
     drawBall();
     drawPaddle();
@@ -200,5 +206,60 @@ function draw() {
     window.requestAnimationFrame(draw);
 };
 
-draw();
+function updateScoreDisplay() {
+    const scoreElement = document.getElementById('score');
+    if (scoreElement) {
+        scoreElement.textContent = score;
+    }
+}
+
+function startGame(selectedDifficulty) {
+    difficulty = selectedDifficulty;
+    gameStarted = true;
+
+    // Set ball speed based on difficulty
+    if (difficulty === 'easy') {
+        dx = 1.5;
+        dy = -1.5;
+    } if (difficulty === 'normal') { // normal
+        dx = 2;
+        dy = -2;
+    } if (difficulty === 'hard') {
+        // hard
+        dx = 4;
+        dy = -4;
+    } else if (difficulty === 'expert') {
+        // expert
+        dx = 6;
+        dy = -6;
+    }
+
+    document.getElementById('difficulty-screen').style.display = 'none';
+    canvas.style.display = 'block';
+    document.getElementById('score-display').style.display = 'block';
+
+    draw();
+}
+
+function setupDifficultyButtons() {
+    document.getElementById('easy-btn').addEventListener('click', () => {
+        startGame('easy');
+    });
+
+    document.getElementById('normal-btn').addEventListener('click', () => {
+        startGame('normal');
+    });
+
+    document.getElementById('hard-btn').addEventListener('click', () => {
+        startGame('hard');
+    });
+
+    document.getElementById('expert-btn').addEventListener('click', () => {
+        startGame('expert');
+    });
+}
+
+
 initEvents();
+setupDifficultyButtons();
+// el juego comienza cuando el usuario selecciona la dificultad 

@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 body {
   display: flex;
   flex-direction: column;
@@ -15,9 +16,9 @@ main {
 }
 
 .game-container {
-  max-width: 700px;
+  max-width: 500px;
   width: 100%;
-  padding: 2.5rem;
+  padding: 1.5rem;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   border-radius: 20px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
@@ -318,12 +319,278 @@ main {
     font-size: 0.9rem;
   }
 }
-canvas {
-  border: 4px solid rgb(255, 255, 255);
-  background-color: rgb(0, 0, 0);
-  border-bottom: transparent;
+/* Retro Arcade Style for Bolita Breakout */
+/* CRT Screen Effect */
+/* 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #0a0a0a;
+    font-family: 'Press Start 2P', cursive;
+    color: #00ff00;
+    overflow-x: hidden;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(0deg,
+            rgba(0, 0, 0, 0.15),
+            rgba(0, 0, 0, 0.15) 1px,
+            transparent 1px,
+            transparent 2px);
+    pointer-events: none;
+    z-index: 1000;
+} 
+
+
+@keyframes flicker {
+    0% {
+        opacity: 0.97;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.98;
+    }
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(18, 16, 16, 0.1);
+    opacity: 0;
+    z-index: 999;
+    pointer-events: none;
+    animation: flicker 0.15s infinite;
+} */
+/* Main Container - Arcade Cabinet Style */
+.container {
+  max-width: 600px;
   margin: 0 auto;
+  padding: 15px;
+  background: linear-gradient(180deg, #1a1a2e 0%, #0f0f1e 100%);
+  border: 5px solid #333;
+  border-radius: 15px;
+  box-shadow: 0 0 50px rgba(0, 255, 0, 0.3), inset 0 0 30px rgba(0, 0, 0, 0.8);
+  position: relative;
+}
+
+/* Decorative corners */
+.container::before,
+.container::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 3px solid #00ff00;
+}
+
+.container::before {
+  top: 10px;
+  left: 10px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.container::after {
+  bottom: 10px;
+  right: 10px;
+  border-left: none;
+  border-top: none;
+}
+
+.container h2 {
+  color: #ff00ff;
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 30px;
+  text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 2px 2px 0px #330033;
+  letter-spacing: 3px;
+}
+
+/* Difficulty Selection Screen */
+#difficulty-screen {
+  text-align: center;
+  padding: 20px;
+}
+
+#difficulty-screen h3 {
+  color: #00ffff;
+  font-size: 16px;
+  margin-bottom: 30px;
+  text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 2px 2px 0px #003333;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+/* Arcade-Style Buttons */
+.difficulty-btn {
   display: block;
+  width: 200px;
+  margin: 15px auto;
+  padding: 15px;
+  font-family: "Press Start 2P", cursive;
+  font-size: 12px;
+  color: #ffff00;
+  background: linear-gradient(180deg, #3a3a3a 0%, #1a1a1a 100%);
+  border: 4px solid #ffff00;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 6px 0 #666600, 0 0 20px rgba(255, 255, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  text-shadow: 0 0 5px #ffff00;
+  transition: all 0.1s ease;
+  position: relative;
+}
+
+.difficulty-btn:hover {
+  color: #00ff00;
+  border-color: #00ff00;
+  background: linear-gradient(180deg, #2a4a2a 0%, #1a2a1a 100%);
+  box-shadow: 0 6px 0 #003300, 0 0 30px rgba(0, 255, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  text-shadow: 0 0 10px #00ff00;
+  transform: translateY(-2px);
+}
+
+.difficulty-btn:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 #666600, 0 0 15px rgba(255, 255, 0, 0.5);
+}
+
+/* Different colors for each difficulty */
+#easy-btn {
+  border-color: #00ff00;
+  color: #00ff00;
+}
+
+#easy-btn:hover {
+  box-shadow: 0 6px 0 #003300, 0 0 30px rgb(0, 255, 0);
+}
+
+#normal-btn {
+  border-color: #ffff00;
+  color: #ffff00;
+}
+
+#normal-btn:hover {
+  box-shadow: 0 6px 0 #666600, 0 0 30px rgb(255, 255, 0);
+}
+
+#hard-btn {
+  border-color: #ff8800;
+  color: #ff8800;
+}
+
+#hard-btn:hover {
+  box-shadow: 0 6px 0 #663300, 0 0 30px rgb(255, 136, 0);
+}
+
+#expert-btn {
+  border-color: #ff0000;
+  color: #ff0000;
+}
+
+#expert-btn:hover {
+  box-shadow: 0 6px 0 #660000, 0 0 30px rgb(255, 0, 0);
+}
+
+/* Canvas - CRT Monitor Effect */
+canvas {
+  display: block;
+  margin: 20px auto;
+  background: #000;
+  border: 6px solid #333;
+  border-radius: 8px;
+  box-shadow: 0 0 40px rgba(0, 255, 0, 0.4), inset 0 0 20px rgba(0, 255, 0, 0.1);
+  position: relative;
+}
+
+/* Score Display - Retro LED Style */
+#score-display {
+  text-align: center;
+  margin-top: 20px;
+  padding: 15px;
+  background: #000;
+  border: 3px solid #00ff00;
+  border-radius: 5px;
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.5), inset 0 0 10px rgba(0, 255, 0, 0.2);
+}
+
+#score-display p {
+  color: #00ff00;
+  font-size: 14px;
+  text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
+  margin: 0;
+}
+
+#score {
+  color: #ffff00;
+  text-shadow: 0 0 10px #ffff00, 0 0 20px #ffff00;
+  margin-left: 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .header-container h1 {
+    font-size: 18px;
+  }
+  .header-container a {
+    font-size: 8px;
+    padding: 6px 10px;
+  }
+  .container {
+    padding: 20px;
+  }
+  .container h2 {
+    font-size: 16px;
+  }
+  #difficulty-screen h3 {
+    font-size: 12px;
+  }
+  .difficulty-btn {
+    width: 160px;
+    font-size: 10px;
+    padding: 12px;
+  }
+  canvas {
+    max-width: 100%;
+    height: auto;
+  }
+}
+/* Glow animation for active elements */
+@keyframes glow {
+  0%, 100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.2);
+  }
+}
+canvas {
+  animation: glow 3s infinite;
 }
 
 body {
@@ -337,6 +604,7 @@ body {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  margin-bottom: 50px;
 }
 .header-container h1 {
   color: #d1cccc;

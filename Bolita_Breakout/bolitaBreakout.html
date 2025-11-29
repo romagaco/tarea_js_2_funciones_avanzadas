@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html>
 <html lang="es">
 
 <head>
@@ -24,7 +23,20 @@
     </div>
     <div class="container">
         <h2>Bolita Breakout</h2>
-        <canvas></canvas>
+
+        <div id="difficulty-screen">
+            <h3>Select Difficulty</h3>
+            <button id="easy-btn" class="difficulty-btn">Easy</button>
+            <button id="normal-btn" class="difficulty-btn">Normal</button>
+            <button id="hard-btn" class="difficulty-btn">Hard</button>
+            <button id="expert-btn" class="difficulty-btn">Expert</button>
+        </div>
+
+        <canvas style="display: none;"></canvas>
+
+        <div id="score-display" style="display: none;">
+            <p>Score: <span id="score">0</span></p>
+        </div>
     </div>
 </body>
 
