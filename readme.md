@@ -98,7 +98,7 @@ Este proyecto está bajo la [Licencia MIT](LICENSE). Úsalo libremente para apre
 - [The Cat API](https://thecatapi.com/) por las imágenes adorables.
 - Documentación de MDN Web Docs para JS avanzado.
 
-¡Gracias por revisar! Si tienes preguntas, contáctame en [romagaco@ejemplo.com](mailto:romagaco@ejemplo.com) o abre un issue.
+¡Gracias por revisar! Si tienes preguntas, contáctame en [roberdex26@gmail.com](mailto:roberdex26@gmail.com) o abre un issue.
 
 ---
 *Desarrollado con ❤️ por [Romagaco](https://github.com/romagaco) en 2025.*
