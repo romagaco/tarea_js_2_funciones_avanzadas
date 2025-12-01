@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html>
 <html lang="es">
 
 <head>
@@ -8,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="../styles/styles.css">
-    <script src="app.js"></script>
+    <script src="app.js" defer></script>
 </head>
 
 <body>
@@ -22,6 +21,40 @@
             <li><a href="../Sudoku/Sudoku.html">Sudoku</a></li>
         </ul>
     </div>
+
+    <div class="cat-container">
+        <h2 class="cat-title">Random Cat</h2>
+        <button onclick="getRandomCat()" class="cat-button">Get Random Cat</button>
+        <img id="catImage" src="" alt="Random Cat" class="cat-image">
+    </div>
+
+    <div class="grid-section">
+        <h2 class="grid-title">Grid de gatitos</h2>
+        <button onclick="loadCatGrid()" class="cat-button refresh-button">🔄 Get New Cats</button>
+        <div class="cat-grid" id="grid"></div>
+    </div>
+
+    <div class="vote-section">
+        <h2 class="grid-title">Vote for Your Favorite Cat! 🐱</h2>
+
+        <div id="vote-options" class="vote-options">
+            <div class="vote-image-container">
+                <img id="image-to-vote-on" class="vote-image" alt="Cat to vote">
+            </div>
+            <div class="vote-buttons">
+                <button onClick="vote(1)" class="vote-btn vote-up">👍 Vote Up</button>
+                <button onClick="vote(-1)" class="vote-btn vote-down">👎 Vote Down</button>
+                <button onClick="showHistoricVotes()" class="vote-btn vote-history">📜 View History</button>
+            </div>
+        </div>
+
+        <div id="vote-results" class="vote-results">
+            <button onClick="showVoteOptions()" class="vote-btn vote-back">⬅️ Back to Voting</button>
+            <h3 class="vote-results-title">Your Voting History</h3>
+            <div id="history-grid" class="imgrid"></div>
+        </div>
+    </div>
+
 </body>
 
 </html>
